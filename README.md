@@ -43,7 +43,7 @@ Weather apps are a great way to learn how to:
 
 > *![image](https://github.com/user-attachments/assets/c6e4c704-ba04-438b-8ee4-5252ccdfe02e)
 *  
-You can take a screenshot or GIF using Lightshot or a screen recorder and place it here for better presentation on GitHub.
+ 
 
 ---
 
