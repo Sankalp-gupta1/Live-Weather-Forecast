@@ -1,58 +1,110 @@
-# 🌦️ Live Weather Forecast App
+# Live Weather Forecast
 
-This is a responsive and beginner-friendly weather web app built using **HTML, CSS, JavaScript**, and the **OpenWeatherMap API**. The app fetches real-time weather data based on user input and displays useful weather metrics like temperature, humidity, wind speed, and weather conditions with appropriate icons.
+A Flask-based weather application that fetches **real-time city weather data from the OpenWeatherMap API** and renders the result in a simple web interface.
 
----
+## Features
 
-## 🔥 Why This App?
+- Search weather by city name
+- Real-time OpenWeatherMap API requests
+- Temperature in Celsius
+- Weather condition data
+- Humidity and wind information from the API response
+- Error handling for invalid or unknown cities
+- Flask-rendered frontend
 
-Weather apps are a great way to learn how to:
+## Tech Stack
 
-- Work with APIs
-- Handle asynchronous JavaScript using `fetch`
-- Update UI dynamically using DOM manipulation
-- Manage API keys securely (for advanced setups)
+- Python
+- Flask
+- Requests
+- OpenWeatherMap API
+- HTML / CSS
 
----
+## Architecture
 
-## 🧰 Technologies Used
+```text
+Browser
+   │
+   ▼
+Flask route
+   │
+   ▼
+City query
+   │
+   ▼
+OpenWeatherMap API
+   │
+   ▼
+JSON weather response
+   │
+   ▼
+Flask template
+   │
+   ▼
+Rendered weather page
+```
 
-| Technology      | Purpose                                   |
-|------------------|--------------------------------------------|
-| HTML5            | Structure of the web page                 |
-| CSS3             | Styling and layout                        |
-| JavaScript       | Logic to fetch and display weather data   |
-| OpenWeatherMap API | External weather data provider        |
+## Project Structure
 
----
+```text
+Live-Weather-Forecast/
+├── app.py
+├── templates/
+│   └── index.html
+├── static/
+├── tests/
+├── weather/
+└── README.md
+```
 
-## ✨ Features
+## Installation
 
-- 🌍 Search weather by city name
-- 📈 Shows:
-  - Temperature (°C)
-  - Weather description (e.g., cloudy, sunny)
-  - Humidity (%)
-  - Wind speed (km/h or m/s)
-- 🌤️ Displays a weather icon based on real-time condition
-- 🔄 Fully responsive design — works on mobile & desktop
-
----
-
-## 📸 App Preview
-
-> *![image](https://github.com/user-attachments/assets/c6e4c704-ba04-438b-8ee4-5252ccdfe02e)
-*  
- 
-
----
-
-## 🚀 How to Run the App Locally
-
-### Step 1: Clone the Repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/weather-app.git
-cd weather-app
+git clone https://github.com/Sankalp-gupta1/Live-Weather-Forecast.git
+cd Live-Weather-Forecast
+```
 
-   cd weather-app
+Install dependencies:
+
+```bash
+pip install flask requests
+```
+
+## API Configuration
+
+The app requires an OpenWeatherMap API key.
+
+The current source contains an API-key value directly in `app.py`. For normal development or deployment, move the key to an environment variable instead of committing it in source control.
+
+Recommended pattern:
+
+```python
+import os
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
+```
+
+## Run
+
+```bash
+python app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5000
+```
+
+Enter a city name to request the current weather.
+
+## Error Handling
+
+If the city is missing or the API does not return a successful response, the UI displays a user-friendly error message instead of weather data.
+
+## Author
+
+**Sankalp Gupta**
+
+GitHub: https://github.com/Sankalp-gupta1
