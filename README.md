@@ -1,110 +1,72 @@
 # Live Weather Forecast
 
-A Flask-based weather application that fetches **real-time city weather data from the OpenWeatherMap API** and renders the result in a simple web interface.
+A clean real-time weather application with a Flask reference implementation and a production browser version.
 
-## Features
+## Live app
 
-- Search weather by city name
-- Real-time OpenWeatherMap API requests
-- Temperature in Celsius
-- Weather condition data
-- Humidity and wind information from the API response
-- Error handling for invalid or unknown cities
-- Flask-rendered frontend
+**https://live-weather-forecast-sankalp.vercel.app/**
 
-## Tech Stack
+## What changed for deployment
 
-- Python
-- Flask
-- Requests
-- OpenWeatherMap API
-- HTML / CSS
+The original Flask app used OpenWeatherMap and required an API key.
 
-## Architecture
+For the public deployment I added a separate `web/` version that uses **Open-Meteo**, which provides weather and geocoding data without an API key.
 
-```text
-Browser
-   │
-   ▼
-Flask route
-   │
-   ▼
-City query
-   │
-   ▼
-OpenWeatherMap API
-   │
-   ▼
-JSON weather response
-   │
-   ▼
-Flask template
-   │
-   ▼
-Rendered weather page
-```
+This keeps the original Flask project in the repository while making the live portfolio version easy to open and use.
 
-## Project Structure
+## Live features
+
+- Search any city
+- Current temperature
+- Weather condition
+- Feels-like temperature
+- Humidity
+- Wind speed
+- Precipitation
+- Seven-day forecast
+- Rain probability
+- Optional browser location
+- Mobile responsive UI
+- No login
+- No database
+- No secret key required
+
+## Project structure
 
 ```text
 Live-Weather-Forecast/
-├── app.py
+├── app.py                 # original Flask version
 ├── templates/
-│   └── index.html
 ├── static/
 ├── tests/
 ├── weather/
-└── README.md
+└── web/
+    └── index.html         # deployed production version
 ```
 
-## Installation
-
-Clone the repository:
+## Run the deployed web version locally
 
 ```bash
-git clone https://github.com/Sankalp-gupta1/Live-Weather-Forecast.git
-cd Live-Weather-Forecast
+cd web
+python -m http.server 8000
 ```
 
-Install dependencies:
+Then open `http://localhost:8000`.
 
-```bash
-pip install flask requests
-```
+## Run the original Flask version
 
-## API Configuration
-
-The app requires an OpenWeatherMap API key.
-
-The current source contains an API-key value directly in `app.py`. For normal development or deployment, move the key to an environment variable instead of committing it in source control.
-
-Recommended pattern:
-
-```python
-import os
-API_KEY = os.getenv("OPENWEATHER_API_KEY")
-```
-
-## Run
+Install dependencies used by the original app and set your OpenWeatherMap key through an environment variable instead of committing a real secret.
 
 ```bash
 python app.py
 ```
 
-Then open:
+## Deployment
 
-```text
-http://127.0.0.1:5000
-```
-
-Enter a city name to request the current weather.
-
-## Error Handling
-
-If the city is missing or the API does not return a successful response, the UI displays a user-friendly error message instead of weather data.
+The `web/` folder is linked to Vercel. Every push to `main` automatically creates a new deployment.
 
 ## Author
 
-**Sankalp Gupta**
-
-GitHub: https://github.com/Sankalp-gupta1
+Sankalp Gupta  
+GitHub: https://github.com/Sankalp-gupta1  
+LinkedIn: https://www.linkedin.com/in/sankalp-gupta-rishi-8617302b0/
