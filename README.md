@@ -4,7 +4,7 @@ A public weather dashboard with a Flask reference backend and a production brows
 
 ## Live app
 
-**https://live-weather-forecast.vercel.app/**
+**https://live-weather-forecast-lemon.vercel.app/**
 
 The hosted version uses **Open-Meteo**, so it works without an API key and does not expose private credentials.
 
