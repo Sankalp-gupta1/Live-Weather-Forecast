@@ -1,72 +1,112 @@
 # Live Weather Forecast
 
-A clean real-time weather application with a Flask reference implementation and a production browser version.
+A public weather dashboard with a Flask reference backend and a production browser UI.
 
 ## Live app
 
-**https://live-weather-forecast-sankalp.vercel.app/**
+**https://live-weather-forecast.vercel.app/**
 
-## What changed for deployment
+The hosted version uses **Open-Meteo**, so it works without an API key and does not expose private credentials.
 
-The original Flask app used OpenWeatherMap and required an API key.
+## Features
 
-For the public deployment I added a separate `web/` version that uses **Open-Meteo**, which provides weather and geocoding data without an API key.
-
-This keeps the original Flask project in the repository while making the live portfolio version easy to open and use.
-
-## Live features
-
-- Search any city
+- Search weather by city
 - Current temperature
-- Weather condition
 - Feels-like temperature
 - Humidity
 - Wind speed
-- Precipitation
-- Seven-day forecast
-- Rain probability
-- Optional browser location
-- Mobile responsive UI
-- No login
+- Five-day forecast
+- Browser geolocation button
+- Responsive mobile/desktop UI
 - No database
-- No secret key required
+- No API key
 
-## Project structure
+## Architecture
+
+### Hosted web app
 
 ```text
-Live-Weather-Forecast/
-├── app.py                 # original Flask version
-├── templates/
-├── static/
-├── tests/
-├── weather/
-└── web/
-    └── index.html         # deployed production version
+Browser
+  -> Open-Meteo Geocoding API
+  -> Open-Meteo Forecast API
+  -> Render current conditions + 5-day forecast
 ```
 
-## Run the deployed web version locally
+### Flask reference app
+
+The original Flask application is still included. Its backend was updated to use Open-Meteo as well, removing the previously committed weather API key.
+
+```text
+Flask route
+  -> geocode city
+  -> request current weather
+  -> map the response into the original template contract
+```
+
+## Run the hosted-style web app locally
 
 ```bash
 cd web
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Open:
 
-## Run the original Flask version
+```text
+http://localhost:8000
+```
 
-Install dependencies used by the original app and set your OpenWeatherMap key through an environment variable instead of committing a real secret.
+## Run the Flask version
+
+Install:
+
+```bash
+pip install flask requests
+```
+
+Run:
 
 ```bash
 python app.py
 ```
 
-## Deployment
+Open:
 
-The `web/` folder is linked to Vercel. Every push to `main` automatically creates a new deployment.
+```text
+http://127.0.0.1:5000
+```
+
+## Project structure
+
+```text
+Live-Weather-Forecast/
+├── app.py
+├── templates/
+├── static/
+├── weather/
+├── tests/
+├── web/
+│   └── index.html
+└── README.md
+```
+
+## Tech stack
+
+- Python
+- Flask
+- Requests
+- HTML
+- CSS
+- JavaScript
+- Open-Meteo
+- Vercel
+
+## Security improvement
+
+The old source contained a weather-service key directly in code. The current version no longer needs that key. The hosted and Flask versions use a keyless weather provider.
 
 ## Author
 
-Sankalp Gupta  
-GitHub: https://github.com/Sankalp-gupta1  
-LinkedIn: https://www.linkedin.com/in/sankalp-gupta-rishi-8617302b0/
+**Sankalp Gupta**
+
+GitHub: https://github.com/Sankalp-gupta1
